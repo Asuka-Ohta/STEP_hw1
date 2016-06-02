@@ -6,7 +6,11 @@
 #define WORD_LENGTH 50  //単語の大きさ 50
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int compare(const void *a, const void *b){
+=======
+int compare(char *a, char *b){
+>>>>>>> origin/master
 =======
 int compare(char *a, char *b){
 >>>>>>> origin/master
@@ -72,6 +76,9 @@ int main(){
   fclose(fq);
   return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
