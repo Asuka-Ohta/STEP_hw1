@@ -5,20 +5,8 @@
 #define SIZE 2000000    //辞書の大きさ 200万
 #define WORD_LENGTH 50  //単語の大きさ 50
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 int compare(const void *a, const void *b){
-=======
-int compare(char *a, char *b){
->>>>>>> origin/master
-=======
-int compare(char *a, char *b){
->>>>>>> origin/master
-  if(a==b){
-    return 0;
-  }else{
-    return -1;
-  }
+  return strcmp((char*)a, (char*)b );
 }
 
 int main(){
@@ -75,10 +63,4 @@ int main(){
   fclose(fp);
   fclose(fq);
   return 0;
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
