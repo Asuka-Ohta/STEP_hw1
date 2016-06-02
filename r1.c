@@ -32,18 +32,19 @@ int main(){
   }
   fq  = fopen("sorted_dict.txt", "w");
   
-  /*  前処理(辞書を文字数の大きい順に並び替える、16文字以上の単語は排除)
+  /  前処理(辞書を文字数の大きい順に並び替える、16文字以上の単語は排除)
   while (fgets(ch, WORD_LENGT, fp) != NULL){
-    x[k] = strlen(ch);
-    for(int l=0;l<k;l++)
-      
-    fprintf(fq,"%s\n",ch); 
-    } */
-
-  while (fgets(data2, WORD_LENGTH, fq) != NULL){
+    if(strlen(ch)>16){
+      break;
+    }
+    fprintf(fq,"%s\n",ch);
+  }
+  
+  while (fgets(ch, WORD_LENGTH, fq) != NULL){
     int i=0,j=0;
     data2 = (char*)malloc(WORD_LENGTH);
     data3 = (char*)malloc(WORD_LENGTH);
+    fgets(data2, WORD_LENGTH, fq);
     strcpy(data3,data2);
     qsort(data3, sizeof(data3)-1, sizeof(data3[0]), compare);
     
