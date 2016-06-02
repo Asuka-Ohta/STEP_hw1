@@ -18,7 +18,8 @@ int main(){
   char data1[16]; //受け取った16文字
   char *data2; //辞書単語の文字列
   char *data3; //sortした辞書単語の文字列
-  char *ch;
+  char *ch,*ch1,*ch2;
+  int k=0;
 
   printf("please input 16 characters : \n");
   scanf("%s",data1);
@@ -28,17 +29,17 @@ int main(){
     printf("We can not open the file.\n");
     exit(EXIT_FAILURE);
   }
-  fq  = fopen("sorted_dict.txt", "w");
+  fq  = fopen("sorted_dict.txt", "a+");
   
   //  前処理(17文字以上の単語は排除)
-  while (fgets(ch, WORD_LENGT, fp) != NULL){
+  while (fgets(ch, WORD_LENGTH, fp) != NULL){
     if(strlen(ch)>16){
       break;
     }
     fprintf(fq,"%s\n",ch);
   }
   
-  while (fgets(ch, WORD_LENGTH, fq) != NULL){
+  while (fgets(ch1, WORD_LENGTH, fq) != NULL){
     int i=0,j=0;
     data2 = (char*)malloc(WORD_LENGTH);
     data3 = (char*)malloc(WORD_LENGTH);
@@ -52,8 +53,17 @@ int main(){
       }else
 	i++;
     }
-    if(i<16)
-      printf("The longest word : %s\n",data2);
-    return 0;
+    if(i<16){
+      if(k < strlen(data2)){
+	k = strlen(data2);
+	ch2 = data2;
+      }
+    }
+    free(data2);
+    free(data3);
   }
-}
+  
+  printf("The longest word : %s\n",ch2);
+  fclose(fp);
+  fclose(fq);
+  return 0;
