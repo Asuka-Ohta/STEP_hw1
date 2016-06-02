@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define SIZE 2000000    //辞書の大きさ 200万
+#define WORD_LENGTH 50  //単語の大きさ 50
+
+int compare(char *a, char *b){
+  if(a==b){
+    return 0;
+  }else{
+    return -1;
+  }
+}
+
+int main(){
+  FILE *fp,*fq;
+  char data1[16]; //受け取った16文字
+  char data2[WORD_LENGTH]; //辞書単語の文字列
+  char data3[WORD_LENGTH]; //sortした辞書単語の文字列
+  char *ch;
+  int k=0;
+  int *x;
+
+  printf("please input 16 characters : \n");
+  scanf("%s",data1);
+  qsort(data1, sizeof(data1)-1, sizeof(data1[0]), compare);
+
+  
+  /*  前処理(辞書を文字数の大きい順に並び替える、16文字以上の単語は排除)
+  if((fp = fopen("/usr/share/dict/words", "r")) == NULL){
+    printf("We can not open the file.\n");
+    exit(EXIT_FAILURE);
+  }
+  fq  = fopen("sorted_dict.txt", "w");
+  while (fgets(ch, WORD_LENGT, fp) != NULL){
+    x[k] = strlen(ch);
+    for(int l=0;l<k;l++)
+      
+    fprintf(fq,"%s\n",ch); 
+  } 
+  */
+
+  if((fp = fopen("dict2.txt", "r")) == NULL){
+    printf("We can not open the file.\n");
+    exit(EXIT_FAILURE);
+  }
+  
+  while (fgets(data2, WORD_LENGTH, fq) != NULL){
+    int i=0,j=0;
+    strcpy(data3,data2);
+    qsort(data3, sizeof(data3)-1, sizeof(data3[0]), compare);
+    
+    while(i<16){
+      if(data1[i]==data3[j]){
+	i++;
+	j++;
+      }else
+	i++;
+    }
+    if(i<16)
+      printf("The longest word : %s\n",data2);
+    return 0;
+  }
+}
+  
